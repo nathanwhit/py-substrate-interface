@@ -30,18 +30,7 @@ from os import path, environ
 # Python 3 only projects can skip this import
 from io import open
 
-if environ.get('TRAVIS_TAG'):
-    version = environ['TRAVIS_TAG'].replace('v', '')
-elif environ.get('CI_COMMIT_TAG'):
-    version = environ['CI_COMMIT_TAG'].replace('v', '')
-elif environ.get('GITHUB_REF'):
-
-    if not environ['GITHUB_REF'].startswith('refs/tags/v'):
-        raise ValueError('Incorrect tag format {}'.format(environ['GITHUB_REF']))
-
-    version = environ['GITHUB_REF'].replace('refs/tags/v', '')
-else:
-    raise ValueError('Missing commit tag, can\'t set version')
+version = '1.1.8'
 
 here = path.abspath(path.dirname(__file__))
 
